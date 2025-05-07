@@ -1,137 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dessert Menu</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .menu-card {
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            padding: 1rem; /* Reduced padding */
-            display: flex;
-            align-items: center;
-            text-align: left; /* Changed text alignment */
-            height: auto; /* Adjusted height to fit content */
-            border: 1px solid #e2e8f0;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-            flex-direction: row; /* Added flex direction */
-            gap: 1rem; /* Added gap between title and description */
-        }
-        .menu-card:hover {
-            transform: translateY(-0.5rem);
-        }
-        .menu-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 0; /* Removed default margin */
-        }
-        .container {
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 90%;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 1rem;
-        }
-        @media (min-width: 768px) {
-            .grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        #ingredients-container {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background-color: #f7fafc;
-            border-radius: 0.5rem;
-            border: 1px solid #e2e8f0;
-        }
-        .description {
-            font-size: 0.875rem; /* Tailwind's text-sm */
-            color: #718096; /* Tailwind's text-gray-600 */
-        }
-    </style>
-</head>
-<body class="bg-gray-100 p-4">
-    <div class="container">
-        <div class="flex justify-between items-center mb-4">
-            <div class="flex items-center">
-                <button id="menu-button" class="mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-                </button>
-                <h1 class="text-2xl font-semibold text-gray-800">Dessert Menu</h1>
-            </div>
-        </div>
-        <div class="grid">
-            <div  class="menu-card" data-ingredients="Shaved ice, Milk, Various fruits, Sweet beans, Jelly">
-                <div class="text-column">
-                    <h2 class="menu-title">Halo-Halo</h2>
-                    <p class="description">A refreshing and famous Filipino dessert with shave ice and a bunch of diffrent toppings.</p>
-                </div>
-            </div>
-            <div class="menu-card" data-ingredients="Coconut, Pandan leaves, Agar-agar jelly, Cream, Milk">
-                 <div class="text-column">
-                    <h2 class="menu-title">Buko Pandan</h2>
-                    <p class="description">A sweet and creamy Filipino dessert with coconut pandan leaves and jelly</p>
-                </div>
-            </div>
-            <div  class="menu-card" data-ingredients="Eggs, Milk, Sugar, Vanilla extract, Caramel">
-                <div class="text-column">
-                    <h2 class="menu-title">Leche Flan</h2>
-                    <p class="description">A rich and creamy custard dessert with a layer of soft caramel.</p>
-                </div>
-            </div>
-            <div class="menu-card" data-ingredients="Eggs, Sugar, Milk, Flour, Yema (custard)">
-                <div class="text-column">
-                    <h2 class="menu-title">Yema Cake</h2>
-                    <p class="description">A soft and fluffy sponge cake with a sweet and sticky yema (custard) topping.</p>
-                </div>
-            </div>
-        </div>
-        <div id="ingredients-container" class="hidden">
-            <h3 class="text-lg font-semibold text-gray-700 mb-2">Ingredients:</h3>
-            <ul class="list-disc list-inside text-gray-600">
-            </ul>
-        </div>
-    </div>
-    <script>
-        const menuButton = document.getElementById('menu-button');
-        const body = document.querySelector('body');
-        const ingredientsContainer = document.getElementById('ingredients-container');
-        const ingredientsList = ingredientsContainer.querySelector('ul');
-        const menuCards = document.querySelectorAll('.menu-card');
+// For Loop Example 1: Printing numbers from 0 to 4
+// This loop initializes a counter variable 'i' to 0.
+// It continues to execute as long as 'i' is less than 5.
+// After each iteration, 'i' is incremented by 1.
+for (let i = 0; i < 5; i++) {
+  console.log(i); // Prints the current value of 'i'
+}
 
-        menuButton.addEventListener('click', () => {
-            // You can add functionality here, like showing a side menu
-            alert('Menu button clicked!'); // For demonstration
-        });
+// For Loop Example 2: Iterating through an array
+// This loop iterates over each element in the 'colors' array.
+// The loop variable 'i' represents the index of the current element.
+const colors = ["red", "green", "blue"];
+for (let i = 0; i < colors.length; i++) {
+  console.log(`Color at index ${i}: ${colors[i]}`); // Prints the index and the color
+}
 
-        menuCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const ingredients = card.dataset.ingredients.split(', ');
-                ingredientsList.innerHTML = '';
-                ingredients.forEach(ingredient => {
-                    const li = document.createElement('li');
-                    li.textContent = ingredient.trim();
-                    ingredientsList.appendChild(li);
-                });
-                ingredientsContainer.classList.remove('hidden');
-            });
-        });
-    </script>
-</body>
-</html>
+// While Loop Example 1: Counting down from 5 to 1
+// This loop continues as long as the 'count' variable is greater than 0.
+// In each iteration, the current value of 'count' is printed, and then 'count' is decremented.
+let count = 5;
+while (count > 0) {
+  console.log(count); // Prints the current value of 'count'
+  count--; // Decrements 'count' by 1
+}
+
+// While Loop Example 2: Repeating an action until a condition is met
+// This loop continues to prompt the user for input until they enter "yes".
+let answer = "";
+while (answer !== "yes") {
+  answer = prompt("Do you want to continue? (yes/no)"); // Prompts the user for input
+  console.log(`You entered: ${answer}`);
+}
+
+// Do...While Loop Example 1: Printing a number at least once
+// This loop will execute the code inside the 'do' block at least once,
+// even if the condition in the 'while' part is initially false.
+let num = 0;
+do {
+  console.log(num); // Prints the value of 'num'
+  num++; // Increments 'num' by 1
+} while (num < 3); // The loop continues as long as 'num' is less than 3
+
+// Do...While Loop Example 2: Getting valid input from the user
+// This loop continues to prompt the user for a number until they enter a value greater than 10.
+let userInput;
+do {
+  userInput = parseInt(prompt("Enter a number greater than 10:")); // Prompts for input and converts it to an integer
+  console.log(`You entered: ${userInput}`);
+} while (userInput <= 10); // The loop continues as long as 'userInput' is less than or equal to 10
